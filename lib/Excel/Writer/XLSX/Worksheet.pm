@@ -1979,12 +1979,12 @@ sub write {
     }
 
     # Match integer with leading zero(s)
-    elsif ( $self->{_leading_zeros} and $token =~ /^0\d+$/ ) {
+    elsif ( $self->{_leading_zeros} and $token =~ /^0[0-9]+$/ ) {
         return $self->write_string( @_ );
     }
 
     # Match number
-    elsif ( $token =~ /^([+-]?)(?=\d|\.\d)\d*(\.\d*)?([Ee]([+-]?\d+))?$/ ) {
+    elsif ( $token =~ /^([+-]?)(?=\d|\.[0-9])[0-9]*(\.[0-9]*)?([Ee]([+-]?[0-9]+))?$/ ) {
         return $self->write_number( @_ );
     }
 
